@@ -1,0 +1,11 @@
+module.exports = function () {
+    $.gulp.task('watch', function () {
+        $.gulp.watch('./src/pug/**/*.pug', $.gulp.parallel('pug'));
+        $.gulp.watch('./src/assets/stylus/**/*.styl', $.gulp.parallel('styles:src'));
+        $.gulp.watch('./src/assets/img/svg/*.svg', $.gulp.parallel('svg'));
+        $.gulp.watch('./data/content.json', $.gulp.parallel('pug'));
+        $.gulp.watch('./src/assets/js/**/*.js', $.gulp.parallel('libsJS:src', 'js:copy'));
+        $.gulp.watch(['./src/assets/img/general/**/*.{png,jpg,gif}',
+                     './src/assets/img/content/**/*.{png,jpg,gif}'], $.gulp.parallel('img:src'));
+    });
+};
